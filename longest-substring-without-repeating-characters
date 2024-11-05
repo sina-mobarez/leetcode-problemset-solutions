@@ -1,0 +1,21 @@
+s = "dvdf"
+
+def lengthOfLongestSubstring(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    if len(s) == 0:
+        return 0
+    start = 0
+    max_length = 0
+    current_sub = {}
+    for i in range(len(s)):
+        if s[i] in current_sub:
+            start = max(start, current_sub[s[i]] + 1)
+        current_sub[s[i]] = i
+        max_length = max(max_length, i - start + 1)
+    return max_length
+
+
+print(lengthOfLongestSubstring(s))
